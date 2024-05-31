@@ -57,10 +57,23 @@
 
 	export let show = false;
 
+	const isDifferentChat = (_chat) => {
+		if (!chat) {
+			return true;
+		}
+		if (!_chat) {
+			return false;
+		}
+		return chat.id !== _chat.id || chat.share_id !== _chat.share_id;
+	};
+
 	$: if (show) {
 		(async () => {
 			if (chatId) {
-				chat = await getChatById(localStorage.token, chatId);
+				const _chat = await getChatById(localStorage.token, chatId);
+				if (isDifferentChat(_chat)) {
+					chat = _chat;
+				}
 			} else {
 				chat = null;
 				console.log(chat);
@@ -97,9 +110,10 @@
 				<div class=" text-sm dark:text-gray-300 mb-1">
 					{#if chat.share_id}
 						<a href="/s/{chat.share_id}" target="_blank"
-							>You have shared this chat <span class=" underline">before</span>.</a
+							>{$i18n.t('You have shared this chat')}
+							<span class=" underline">{$i18n.t('before')}</span>.</a
 						>
-						Click here to
+						{$i18n.t('Click here to')}
 						<button
 							class="underline"
 							on:click={async () => {
@@ -108,11 +122,14 @@
 								if (res) {
 									chat = await getChatById(localStorage.token, chatId);
 								}
-							}}>delete this link</button
-						> and create a new shared link.
+							}}
+							>{$i18n.t('delete this link')}
+						</button>
+						{$i18n.t('and create a new shared link.')}
 					{:else}
-						Messages you send after creating your link won't be shared. Users with the URL will be
-						able to view the shared chat.
+						{$i18n.t(
+							"Messages you send after creating your link won't be shared. Users with the URL will be able to view the shared chat."
+						)}
 					{/if}
 				</div>
 
@@ -133,6 +150,7 @@
 							<button
 								class=" self-center flex items-center gap-1 px-3.5 py-2 rounded-xl text-sm font-medium bg-emerald-600 hover:bg-emerald-500 text-white"
 								type="button"
+								id="copy-and-share-chat-button"
 								on:click={async () => {
 									const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 

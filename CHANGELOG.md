@@ -5,6 +5,47 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.125] - 2024-05-19
+
+### Added
+
+- **🔄 Updated UI**: Chat interface revamped with chat bubbles. Easily switch back to the old style via settings > interface > chat bubble UI.
+- **📂 Enhanced Sidebar UI**: Model files, documents, prompts, and playground merged into Workspace for streamlined access.
+- **🚀 Improved Many Model Interaction**: All responses now displayed simultaneously for a smoother experience.
+- **🐍 Python Code Execution**: Execute Python code locally in the browser with libraries like 'requests', 'beautifulsoup4', 'numpy', 'pandas', 'seaborn', 'matplotlib', 'scikit-learn', 'scipy', 'regex'.
+- **🧠 Experimental Memory Feature**: Manually input personal information you want LLMs to remember via settings > personalization > memory.
+- **💾 Persistent Settings**: Settings now saved as config.json for convenience.
+- **🩺 Health Check Endpoint**: Added for Docker deployment.
+- **↕️ RTL Support**: Toggle chat direction via settings > interface > chat direction.
+- **🖥️ PowerPoint Support**: RAG pipeline now supports PowerPoint documents.
+- **🌐 Language Updates**: Ukrainian, Turkish, Arabic, Chinese, Serbian, Vietnamese updated; Punjabi added.
+
+### Changed
+
+- **👤 Shared Chat Update**: Shared chat now includes creator user information.
+
+## [0.1.124] - 2024-05-08
+
+### Added
+
+- **🖼️ Improved Chat Sidebar**: Now conveniently displays time ranges and organizes chats by today, yesterday, and more.
+- **📜 Citations in RAG Feature**: Easily track the context fed to the LLM with added citations in the RAG feature.
+- **🔒 Auth Disable Option**: Introducing the ability to disable authentication. Set 'WEBUI_AUTH' to False to disable authentication. Note: Only applicable for fresh installations without existing users.
+- **📹 Enhanced YouTube RAG Pipeline**: Now supports non-English videos for an enriched experience.
+- **🔊 Specify OpenAI TTS Models**: Customize your TTS experience by specifying OpenAI TTS models.
+- **🔧 Additional Environment Variables**: Discover more environment variables in our comprehensive documentation at Open WebUI Documentation (https://docs.openwebui.com).
+- **🌐 Language Support**: Arabic, Finnish, and Hindi added; Improved support for German, Vietnamese, and Chinese.
+
+### Fixed
+
+- **🛠️ Model Selector Styling**: Addressed styling issues for improved user experience.
+- **⚠️ Warning Messages**: Resolved backend warning messages.
+
+### Changed
+
+- **📝 Title Generation**: Limited output to 50 tokens.
+- **📦 Helm Charts**: Removed Helm charts, now available in a separate repository (https://github.com/open-webui/helm-charts).
+
 ## [0.1.123] - 2024-05-02
 
 ### Added

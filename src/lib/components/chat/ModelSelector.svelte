@@ -2,7 +2,7 @@
 	import { Collapsible } from 'bits-ui';
 
 	import { setDefaultModels } from '$lib/apis/configs';
-	import { models, showSettings, settings, user } from '$lib/stores';
+	import { models, showSettings, settings, user, mobile } from '$lib/stores';
 	import { onMount, tick, getContext } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import Selector from './ModelSelector/Selector.svelte';
@@ -38,7 +38,7 @@
 	}
 </script>
 
-<div class="flex flex-col mt-0.5 w-full">
+<div class="flex flex-col w-full items-center md:items-start">
 	{#each selectedModels as selectedModel, selectedModelIdx}
 		<div class="flex w-full max-w-fit">
 			<div class="overflow-hidden w-full">
@@ -82,7 +82,7 @@
 				</div>
 			{:else}
 				<div class="  self-center disabled:text-gray-600 disabled:hover:text-gray-600 mr-2">
-					<Tooltip content="Remove Model">
+					<Tooltip content={$i18n.t('Remove Model')}>
 						<button
 							{disabled}
 							on:click={() => {
@@ -108,7 +108,7 @@
 	{/each}
 </div>
 
-{#if showSetDefault}
+{#if showSetDefault && !$mobile}
 	<div class="text-left mt-0.5 ml-1 text-[0.7rem] text-gray-500">
 		<button on:click={saveDefaultModel}> {$i18n.t('Set as default')}</button>
 	</div>
